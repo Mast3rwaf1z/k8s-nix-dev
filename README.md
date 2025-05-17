@@ -9,10 +9,11 @@ a simple setup could be as simple as:
 {
     inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
     inputs.k8s.url = "github:Mast3rwaf1z/k8s-nix-dev";
-    inputs.k8s.nixpkgs.follows = "nixpkgs";
+    inputs.k8s.inputs.nixpkgs.follows = "nixpkgs";
     outputs = inputs @ { k8s , ... }: with k8s.packages.x86_64-linux; { # load k8s functions into local scope
         packages.x86_64-linux.default = mkCluster "my-cluster" [];
     };
+}
 ```
 where you will start a shell inside the VM where you can add your own kubernetes YAML to the cluster by traditionally using `kubectl`
 
@@ -21,7 +22,7 @@ while a more complete example could be:
 {
     inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
     inputs.k8s.url = "github:Mast3rwaf1z/k8s-nix-dev";
-    inputs.k8s.nixpkgs.follows = "nixpkgs";
+    inputs.k8s.inputs.nixpkgs.follows = "nixpkgs";
     outputs = inputs @ { k8s , ... }: with k8s.packages.x86_64-linux; { # load k8s functions into local scope
         packages.x86_64-linux.default = mkCluster "my-cluster" [
             (mkDeployment "postgres" [{
