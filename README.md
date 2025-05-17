@@ -11,7 +11,7 @@ a simple setup could be as simple as:
     inputs.k8s.url = "github:Mast3rwaf1z/k8s-nix-dev";
     inputs.k8s.inputs.nixpkgs.follows = "nixpkgs";
     outputs = inputs @ { k8s , ... }: with k8s.packages.x86_64-linux; { # load k8s functions into local scope
-        packages.x86_64-linux.default = mkCluster "my-cluster" [];
+        packages.x86_64-linux.default = mkCluster [];
     };
 }
 ```
@@ -24,7 +24,7 @@ while a more complete example could be:
     inputs.k8s.url = "github:Mast3rwaf1z/k8s-nix-dev";
     inputs.k8s.inputs.nixpkgs.follows = "nixpkgs";
     outputs = inputs @ { k8s , ... }: with k8s.packages.x86_64-linux; { # load k8s functions into local scope
-        packages.x86_64-linux.default = mkCluster "my-cluster" [
+        packages.x86_64-linux.default = mkCluster [
             (mkDeployment "postgres" [{
                 name = "postgres";
                 image = "postgres:latest";

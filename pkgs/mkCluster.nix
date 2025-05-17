@@ -1,6 +1,6 @@
 inputs:
 
-name: kubeconfigs:
+kubeconfigs:
 
 (inputs.nixpkgs.lib.nixosSystem {
     system = inputs.system;
@@ -31,8 +31,6 @@ name: kubeconfigs:
 
                 addons.dns.enable = true;
             };
-
-            system.stateVersion = "25.05";
 
             virtualisation.vmVariant.virtualisation.graphics = false;
 

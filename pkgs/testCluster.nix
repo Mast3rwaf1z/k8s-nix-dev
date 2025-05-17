@@ -17,7 +17,7 @@ let
     mkNodePort = port: 30000 + (pkgs.lib.mod port 1000);
 in
 
-mkCluster "autoscaling-cluster" [
+mkCluster [
     (mkDeployment "workload-api" [{
         name = "workload-api";
         image = "ghcr.io/aau-p9s/workload-api:latest";
