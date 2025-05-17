@@ -3,8 +3,12 @@ a simple system to make kubernetes deployments using nix, kinda similar to kuber
 
 I recommend removing the qcow2 images between runs to keep it completely stateless
 
-a simple setup could be as simple as:
+Getting started you can just use it directly from the nix command line:
+```sh
+nix run --impure --expr '(with builtins.getFlake "github:Mast3rwaf1z/k8s-nix-dev").packages.x86_64-linux; mkCluster "" [])'
+```
 
+Or making a simple flake:
 ```nix
 {
     inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
