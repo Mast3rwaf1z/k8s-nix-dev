@@ -50,3 +50,5 @@ while a more complete example could be:
 }
 ```
 being a little basic, this would start up a cluster with postgres running and accessible on port 30432, and even with the ability to add more services directly with kubectl 
+
+Each entry in the list passed to `mkCluster` is converted to JSON, which is passed directly to kubernetes, so you could define a full deployment file instead of using the helpers i've defined, this gives you more control but also exposes you to the verboseness i'm trying to abstract from with this small project.
