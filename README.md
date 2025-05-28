@@ -5,7 +5,7 @@ I recommend removing the qcow2 images between runs to keep it completely statele
 
 Getting started you can just use it directly from the nix command line:
 ```sh
-nix run --impure --expr '(with builtins.getFlake "github:Mast3rwaf1z/k8s-nix-dev").packages.x86_64-linux; mkCluster "" [])'
+nix run --impure --expr '(with builtins.getFlake "github:Mast3rwaf1z/k8s-nix-dev").packages.x86_64-linux; mkCluster [] {})'
 ```
 
 Or making a simple flake:
@@ -15,7 +15,7 @@ Or making a simple flake:
     inputs.k8s.url = "github:Mast3rwaf1z/k8s-nix-dev";
     inputs.k8s.inputs.nixpkgs.follows = "nixpkgs";
     outputs = inputs @ { k8s , ... }: with k8s.packages.x86_64-linux; { # load k8s functions into local scope
-        packages.x86_64-linux.default = mkCluster [];
+        packages.x86_64-linux.default = mkCluster [] {};
     };
 }
 ```
@@ -45,7 +45,7 @@ while a more complete example could be:
                 targetPort = 5432;
                 nodePort = 30432;
             }])
-        ];
+        ] {};
     };
 }
 ```
