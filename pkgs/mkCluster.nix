@@ -37,6 +37,7 @@ kubeconfigs:
             environment.systemPackages = with pkgs; [
                 kubernetes
                 kubectl
+                git
             ];
 
             systemd.services.setup-kubectl = {
