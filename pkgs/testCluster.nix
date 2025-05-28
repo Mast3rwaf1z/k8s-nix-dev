@@ -54,4 +54,4 @@ mkCluster [
         targetPort = workloadGenerator.port;
         nodePort = mkNodePort workloadGenerator.port;
     }])
-]
+] {}
