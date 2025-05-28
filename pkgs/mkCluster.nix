@@ -1,10 +1,10 @@
 inputs:
 
-kubeconfigs:
+kubeconfigs: extraConfig:
 
 (inputs.nixpkgs.lib.nixosSystem {
     system = inputs.system;
-    modules = [(
+    modules = [extraConfig (
         { pkgs, ... }:
 
         let
